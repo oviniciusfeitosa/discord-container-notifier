@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+url='___Discord_link___'
+username='DiscordBotName'
+listOfContainers="conaiter1 container2"
