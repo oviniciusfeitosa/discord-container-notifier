@@ -8,18 +8,14 @@ containers=`docker ps -f status=running --format "{{.Names}}"`
 for container in $listOfContainers
 do
 
-  if echo $containers |grep -q $container 
+  if ! (echo $containers |grep -q $container )
   then 
-    echo "$container online "
-    message="Alright! The container $container is up ! \n \n"
-  else 
     echo "$container offline"
     message="Warning! The container $container is down ! \n \n"
     
-    #exit 1
+    curl -H "Content-Type: application/json" \
+    -X POST \
+    -d "{\"username\": \"${username}\", \"content\": \"${message}\"}" $url
   fi
-  curl -H "Content-Type: application/json" \
-  -X POST \
-  -d "{\"username\": \"${username}\", \"content\": \"${message}\"}" $url
 done
 exit 0
