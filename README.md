@@ -1,7 +1,7 @@
 
 # Discord container notifier
 
-Notify at Discord channel when docker containers is down.
+Notify at Discord channel when docker containers are down.
 
 ## How to use
 
